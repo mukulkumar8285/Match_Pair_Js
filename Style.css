@@ -5,7 +5,8 @@
 
 }
 body{
-    display: flex;
+    /* display: flex; */
+    
     justify-content: center;
     align-items: center;
     background-color: black;
@@ -22,6 +23,7 @@ body{
 }
 .game{
     width: 440px;
+    margin: auto;
     height: 440px;
     display: flex;
     flex-wrap: wrap;
