@@ -1,0 +1,67 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box; 
+
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+.container{
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    background-color: aqua;
+    
+}
+.game{
+    width: 440px;
+    height: 440px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+#image{
+    width: 80px;
+    height: 80px;
+}
+
+.item{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transform: rotateY(180deg);
+    transition: 0.25s;
+}
+.item.divOpen{
+    transform: rotateY(0deg);
+
+}
+.item::after{
+    content: "";
+    position: absolute;
+    inset:0;
+    background-color: gold;
+    transition: 0.25s;
+    transform: rotate(0deg);
+    backface-visibility: hidden;
+}
+
+.divOpen::after,
+    .DivMatch::after{
+    transform: rotateY(180deg);
+}

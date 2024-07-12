@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./Style.css" />
+  </head>
+  <body>
+    <h1>Match Pair</h1>
+    <div class="game"></div>
+    <button onclick="window.location.reload();">Restart</button>
+    <script>
+      const game = document.getElementsByClassName("game")[0];
+      const image = [
+        "./ImageFolder/cake2.png",
+        "./ImageFolder/cake.png",
+        "./ImageFolder/Tree.png",
+        "./ImageFolder/tree2.png",
+        "./ImageFolder/tree3.png",
+        "./ImageFolder/tree4.png",
+        "./ImageFolder/cake2.png",
+        "./ImageFolder/cake.png",
+        "./ImageFolder/Tree.png",
+        "./ImageFolder/tree2.png",
+        "./ImageFolder/tree3.png",
+        "./ImageFolder/tree4.png",
+      ];
+      var suf_image = image.sort(() => (Math.random() > 0.5 ? 2 : -1));
+      for (var i = 0; i < image.length; i++) {
+        let div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `<img id="image" src="${suf_image[i]}"/>`;
+        //document.querySelector('.game').appendChild(div)
+        div.onclick = function () {
+          this.classList.add("divOpen");
+          setTimeout(function () {
+            if (document.querySelectorAll(".divOpen").length > 1) {
+              if (
+                document.querySelectorAll(".divOpen")[0].innerHTML ==
+                document.querySelectorAll(".divOpen")[1].innerHTML
+              ) {
+                document
+                  .querySelectorAll(".divOpen")[0]
+                  .classList.add("DivMatch");
+                document
+                  .querySelectorAll(".divOpen")[1]
+                  .classList.add("DivMatch");
+                document
+                  .querySelectorAll(".divOpen")[0]
+                  .classList.remove("divOpen");
+                document
+                  .querySelectorAll(".divOpen")[1]
+                  .classList.remove("divOpen");
+
+                if (
+                  document.querySelectorAll(".DivMatch").length == image.length
+                ) {
+                  alert("You Win");
+                }
+              } else {
+                document
+                  .querySelectorAll(".divOpen")[1]
+                  .classList.remove("divOpen");
+                document
+                  .querySelectorAll(".divOpen")[0]
+                  .classList.remove("divOpen");
+              }
+            }
+          }, 1500);
+        };
+
+        game.appendChild(div);
+      }
+    </script>
+  </body>
+</html>
