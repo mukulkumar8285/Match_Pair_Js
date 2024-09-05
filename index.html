@@ -12,10 +12,13 @@
 </div>
     <div class="game"></div>
     <div style="text-align: center;">
-    <button style="padding: 8px 15px; border-radius: 7px; border:none" onclick="window.location.reload();">Restart</button>
+      <p>Count : <span id="Count">0</span> </p>
+    <button style="padding: 8px 15px; border-radius: 7px; border:none; background-color:brown;" onclick="window.location.reload();">Restart</button>
 </div>
     <script>
       const game = document.getElementsByClassName("game")[0];
+      const Count = document.getElementById("Count");
+      let CountNumber = 0;
       const image = [
         "./ImageFolder/cake2.png",
         "./ImageFolder/cake.png",
@@ -32,14 +35,18 @@
       ];
       var suf_image = image.sort(() => (Math.random() > 0.5 ? 2 : -1));
       for (var i = 0; i < image.length; i++) {
+        
         let div = document.createElement("div");
         div.className = "item";
         div.innerHTML = `<img id="image" src="${suf_image[i]}"/>`;
         //document.querySelector('.game').appendChild(div)
         div.onclick = function () {
+          CountNumber++;
+        Count.textContent = CountNumber;
           this.classList.add("divOpen");
           setTimeout(function () {
             if (document.querySelectorAll(".divOpen").length > 1) {
+            
               if (
                 document.querySelectorAll(".divOpen")[0].innerHTML ==
                 document.querySelectorAll(".divOpen")[1].innerHTML
@@ -75,6 +82,7 @@
         };
 
         game.appendChild(div);
+        Count.appendChild
       }
     </script>
   </body>
